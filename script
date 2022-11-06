@@ -1,0 +1,290 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Window = Rayfield:CreateWindow({
+	Name = "Vendetta Hub || 👊🏼 Cobra Kai Karate 🥋",
+	LoadingTitle = "Vendetta Hub || 👊🏼 Cobra Kai Karate 🥋",
+	LoadingSubtitle = "by JayxRN0T",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = "Vendetta Hub", -- Create a custom folder for your hub/game
+		FileName = "Vendetta Hub"
+	},
+        Discord = {
+        	Enabled = false,
+        	Invite = "", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        },
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Vendetta Hub || Cobra Kai Karate",
+		Subtitle = "Key System",
+		Note = "Join the discord https://discord.gg/BHka2zK9",
+		FileName = "VendettaKey",
+		SaveKey = true,
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = "vendettaontop"
+	}
+})
+
+-- ANTI AFK
+pcall(function()
+    local VirtualUser=game:service'VirtualUser'
+    game:service'Players'.LocalPlayer.Idled:connect(function()
+    warn("anti-afk")
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+       end)
+    end) 
+ 
+--Values
+_G.pushup = true
+_G.bench = true
+_G.doublereg = true
+_G.punch = true
+_G.handkick = true
+_G.situp = true
+_G.sweep = true
+_G.crane = true
+_G.jumpkick = true
+_G.tpbag = true
+_G.dumbell = true
+_G.clicktp = true
+--Functions
+ 
+function pushup()
+    while _G.pushup == true do
+        game:GetService("ReplicatedStorage").Remotes.PushUp:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function situp()
+    while _G.situp == true do
+        game:GetService("ReplicatedStorage").Remotes.SitUp:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function doublereg()
+    while _G.doublereg == true do
+        game:GetService("ReplicatedStorage").Remotes.DoubleReg:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function handkick()
+    while _G.handkick == true do
+        game:GetService("ReplicatedStorage").Remotes.HandKick:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function punch()
+    while _G.punch == true do
+        game:GetService("ReplicatedStorage").Remotes.Attack:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function sweep()
+    while _G.sweep == true do
+        game:GetService("ReplicatedStorage").Remotes.Stun:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function crane()
+    while _G.crane == true do
+        game:GetService("ReplicatedStorage").Remotes.CraneKick:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function jumpkick()
+    while _G.jumpkick == true do
+        game:GetService("ReplicatedStorage").Remotes.JumpKick:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function bench()
+    while _G.bench == true do
+        game:GetService("ReplicatedStorage").Remotes.Bench:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+function situp()
+    while _G.situp == true do
+        game:GetService("ReplicatedStorage").Remotes.SitUp:FireServer()
+        wait(.00000000000000000000000000000000000000000001)
+ end
+end
+ 
+function dumbell()
+    while _G.dumbell == true do
+        wait(.1)
+        local A_1 = "Rep"
+        local A_2 = 1
+        game:GetService("ReplicatedStorage").Remotes.Dumbell:FireServer(A_1, A_2)
+    end
+end
+function tpbag()
+    while _G.tpbag == true do 
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(97.9362869, 3.39999914, 73.2676163, 0.999426484, -8.96343177e-09, 0.0338635258, 7.54002993e-09, 1, 4.21611901e-08, -0.0338635258, -4.18816768e-08, 0.999426484)
+        wait(.0000000000000000000000000000000000000000000000000000000000000000000001)
+    end
+end
+function etp() end
+    plr = game.Players.LocalPlayer
+hum = plr.Character.HumanoidRootPart
+mouse = plr:GetMouse()
+
+mouse.KeyDown:connect(function(key)
+if key == "t" then
+if mouse.Target then
+hum.CFrame = CFrame.new(mouse.Hit.x, mouse.Hit.y + 5, mouse.Hit.z)
+end
+end
+end)
+-- Tabs
+local FarmTab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local KeybindTab = Window:CreateTab("Keybind Scripts", 4483362458) -- Title, Image
+local PlayerTab = Window:CreateTab("Player Scripts", 4483362458) -- Title, Image
+
+-- Toggles
+local Toggle = FarmTab:CreateToggle({
+	Name = "AutoBench",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.bench = Value
+        bench()
+	end
+})
+
+local Toggle = FarmTab:CreateToggle({
+	Name = "Auto Dumbell",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.dumbell = Value
+        dumbell()
+	end
+})
+
+local Toggle = FarmTab:CreateToggle({
+	Name = "Tp to bag",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.tpbag = Value
+        tpbag()
+	end
+})
+
+local Toggle = KeybindTab:CreateToggle({
+	Name = "Auto Pushup",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.pushup = Value
+        pushup()
+	end
+})
+
+local Toggle = KeybindTab:CreateToggle({
+	Name = "Auto Situp",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.situp = Value
+        situp()
+	end
+})
+
+local Toggle = KeybindTab:CreateToggle({
+	Name = "Auto Punch",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.punch = Value
+        punch()
+	end
+})
+
+local Toggle = KeybindTab:CreateToggle({
+	Name = "Auto Sweep",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.sweep = Value
+        sweep()
+	end
+})
+
+local Toggle = KeybindTab:CreateToggle({
+	Name = "Auto DoubleKick",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.doublereg = Value
+        doublereg()
+	end
+})
+
+local Toggle = KeybindTab:CreateToggle({
+	Name = "Auto HandKick",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.handkick = Value
+        handkick()
+	end
+})
+
+local Toggle = KeybindTab:CreateToggle({
+	Name = "Auto CraneKick",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.crane = Value
+        crane()
+	end
+})
+
+local Toggle = KeybindTab:CreateToggle({
+	Name = "Auto JumpKick",
+	CurrentValue = false,
+	Callback = function(Value)
+        _G.jumpkick = Value
+        jumpkick()
+	end
+})
+
+ local Slider = PlayerTab:CreateSlider({
+	Name = "WalkSpeed",
+	Range = {16, 500},
+	Increment = 10,
+	Suffix = "WalkSpeed",
+	CurrentValue = 16,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(s)
+		game.Players.LocalPlayer.character.Humanoid.WalkSpeed = s
+	end,
+})
+
+ local Slider = PlayerTab:CreateSlider({
+	Name = "JumpPower",
+	Range = {50, 250},
+	Increment = 1,
+	Suffix = "JumpPower",
+	CurrentValue = 16,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(s)
+		game.Players.LocalPlayer.character.Humanoid.JumpPower = s
+    end,
+})
+
+local Button = PlayerTab:CreateButton({
+	Name = "T to TP",
+	Callback = function()
+    _G.etp = Value
+    etp()
+	end,
+})
+
+
+
+
+
+
+Rayfield:LoadConfiguration()
