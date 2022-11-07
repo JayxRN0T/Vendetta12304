@@ -19,7 +19,7 @@ local Window = Rayfield:CreateWindow({
 		Subtitle = "Key System",
 		Note = "Join the discord https://discord.gg/BHka2zK9",
 		FileName = "VendettaKey",
-		SaveKey = true,
+		SaveKey = false,
 		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
 		Key = "vendettaontop"
 	}
@@ -34,6 +34,10 @@ pcall(function()
     VirtualUser:ClickButton2(Vector2.new())
        end)
     end) 
+
+-- GLOBALS
+LP = game.Players.LocalPlayer
+VIM = game:GetService("VirtualInputManager")
  
 --Values
 _G.pushup = true
@@ -48,6 +52,8 @@ _G.jumpkick = true
 _G.tpbag = true
 _G.dumbell = true
 _G.clicktp = true
+_G.hidename = true
+_G.nostun = true
 --Functions
  
 function pushup()
@@ -145,11 +151,23 @@ hum.CFrame = CFrame.new(mouse.Hit.x, mouse.Hit.y + 5, mouse.Hit.z)
 end
 end
 end)
+function hidename()
+    while _G.hidename == true do 
+        LP.Character.Head.PlayerHeader:Destroy()
+    end
+end
+function nostun()
+    while _G.nostun == true do
+        LP.StatsFolder.Stunned:Destroy()
+        game:GetService("ReplicatedStorage").Remotes.Stun:Destroy()
+    end
+end
 -- Tabs
 local FarmTab = Window:CreateTab("Main", 4483362458) -- Title, Image
 local KeybindTab = Window:CreateTab("Keybind Scripts", 4483362458) -- Title, Image
 local PlayerTab = Window:CreateTab("Player Scripts", 4483362458) -- Title, Image
-
+local CreditsTab = Window:CreateTab("Credits", 4483362458) -- Title, Image
+local Section = FarmTab:CreateSection("Equipment Scripts")
 -- Toggles
 local Toggle = FarmTab:CreateToggle({
 	Name = "AutoBench",
@@ -170,14 +188,14 @@ local Toggle = FarmTab:CreateToggle({
 })
 
 local Toggle = FarmTab:CreateToggle({
-	Name = "Tp to bag",
+	Name = "Teleport to Bag",
 	CurrentValue = false,
 	Callback = function(Value)
         _G.tpbag = Value
         tpbag()
 	end
 })
-
+local Section = KeybindTab:CreateSection("Stat Scripts (OP for Autofarming)")
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Pushup",
 	CurrentValue = false,
@@ -195,7 +213,7 @@ local Toggle = KeybindTab:CreateToggle({
         situp()
 	end
 })
-
+local Section = KeybindTab:CreateSection("Attack Scripts (OP for Autofarming strength)")
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Punch",
 	CurrentValue = false,
@@ -249,7 +267,7 @@ local Toggle = KeybindTab:CreateToggle({
         jumpkick()
 	end
 })
-
+local Section = PlayerTab:CreateSection("Walkspeed and JumpPower Sliders")
  local Slider = PlayerTab:CreateSlider({
 	Name = "WalkSpeed",
 	Range = {16, 500},
@@ -273,7 +291,44 @@ local Toggle = KeybindTab:CreateToggle({
 		game.Players.LocalPlayer.character.Humanoid.JumpPower = s
     end,
 })
+local Section = PlayerTab:CreateSection("Player Scripts")
+local Button = PlayerTab:CreateButton({
+	Name = "Hide Accesory",
+	Callback = function()
+        local player = game.Players.LocalPlayer
+    for i,v in pairs(player.Character:GetChildren()) do
+       if v.ClassName == "Accessory" or v.Name == "Belt" or v.Name == "Shirt" or v.Name == "Pants" then
+           v:Destroy()
+           local player = game.Players.LocalPlayer
+           for i,v in pairs(player.Character.Head:GetChildren()) do
+                   if v:IsA("Decal") then
+                   v:remove()
+                   end
+               end
+       end
+    end
+end,
+})
 
+local Button = PlayerTab:CreateButton({
+	Name = "Hide Name",
+	Callback = function()
+    _G.hidename = Value
+    hidename()
+	end,
+})
+
+local Button = PlayerTab:CreateButton({
+	Name = "Remove Stun",
+	Callback = function()
+    _G.nostun = Value
+    nostun()
+	end,
+})
+
+
+
+local Section = PlayerTab:CreateSection("Teleportation Script")
 local Button = PlayerTab:CreateButton({
 	Name = "T to TP",
 	Callback = function()
@@ -282,8 +337,16 @@ local Button = PlayerTab:CreateButton({
 	end,
 })
 
-
-
+local Section = CreditsTab:CreateSection("Credits")
+local Label = CreditsTab:CreateLabel("Made by JayxRN0T#0329")
+local Label = CreditsTab:CreateLabel("This is still being worked on, I will add more scripts time to time.")
+local Section = CreditsTab:CreateSection("Discord Server")
+local Button = CreditsTab:CreateButton({
+	Name = "Copy Discord to Clipboard",
+	Callback = function()
+		setclipboard("https://discord.gg/BHka2zK9")
+	end,
+})
 
 
 
