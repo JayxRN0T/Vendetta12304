@@ -175,100 +175,100 @@ local Section = FarmTab:CreateSection("Equipment Scripts")
 local Toggle = FarmTab:CreateToggle({
 	Name = "Auto Bench",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.bench = Value
         bench()
-	end
+	end,
 })
 
 local Toggle = FarmTab:CreateToggle({
 	Name = "Auto Dumbell",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.dumbell = Value
         dumbell()
-	end
+	end,
 })
 
 local Toggle = FarmTab:CreateToggle({
 	Name = "Teleport to Bag",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.tpbag = Value
         tpbag()
-	end
+	end,
 })
 local Section = KeybindTab:CreateSection("Stat Scripts (OP for Autofarming)")
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Pushup",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.pushup = Value
         pushup()
-	end
+	end,
 })
 
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Situp",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.situp = Value
         situp()
-	end
+	end,
 })
 local Section = KeybindTab:CreateSection("Attack Scripts (OP for Autofarming strength)")
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Punch",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.punch = Value
         punch()
-	end
+	end,
 })
 
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Sweep",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.sweep = Value
         sweep()
-	end
+	end,
 })
 
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto DoubleKick",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.doublereg = Value
         doublereg()
-	end
+	end,
 })
 
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto HandKick",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.handkick = Value
         handkick()
-	end
+	end,
 })
 
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto CraneKick",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.crane = Value
         crane()
-	end
+	end,
 })
 
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto JumpKick",
 	CurrentValue = false,
-	k = function(Value)
+	Callback = function(Value)
         _G.jumpkick = Value
         jumpkick()
-	end
+	end,
 })
 local Section = PlayerTab:CreateSection("Walkspeed and JumpPower Sliders")
  local Slider = PlayerTab:CreateSlider({
@@ -278,7 +278,7 @@ local Section = PlayerTab:CreateSection("Walkspeed and JumpPower Sliders")
 	Suffix = "WalkSpeed",
 	CurrentValue = 16,
 	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-	k = function(s)
+	Callback = function(s)
 		game.Players.LocalPlayer.character.Humanoid.WalkSpeed = s
 	end,
 })
@@ -290,14 +290,14 @@ local Section = PlayerTab:CreateSection("Walkspeed and JumpPower Sliders")
 	Suffix = "JumpPower",
 	CurrentValue = 16,
 	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-	k = function(s)
+	Callback = function(s)
 		game.Players.LocalPlayer.character.Humanoid.JumpPower = s
     end,
 })
 local Section = PlayerTab:CreateSection("Player Scripts")
 local Button = PlayerTab:CreateButton({
 	Name = "Hide Accesory",
-	k = function()
+	Callback = function()
         local player = game.Players.LocalPlayer
     for i,v in pairs(player.Character:GetChildren()) do
        if v.ClassName == "Accessory" or v.Name == "Belt" or v.Name == "Shirt" or v.Name == "Pants" then
@@ -315,7 +315,7 @@ end,
 
 local Button = PlayerTab:CreateButton({
 	Name = "Hide Name",
-	k = function()
+	Callback = function()
     _G.hidename = Value
     hidename()
 	end,
@@ -323,7 +323,7 @@ local Button = PlayerTab:CreateButton({
 
 local Button = PlayerTab:CreateButton({
 	Name = "Remove Stun",
-	k = function()
+	Callback = function()
     _G.nostun = Value
     nostun()
 	end,
@@ -334,7 +334,7 @@ local Button = PlayerTab:CreateButton({
 local Section = PlayerTab:CreateSection("Teleportation Script")
 local Button = PlayerTab:CreateButton({
 	Name = "T to TP",
-	k = function()
+	Callback = function()
     _G.etp = Value
     etp()
 	end,
@@ -350,6 +350,7 @@ local Button = CreditsTab:CreateButton({
 local Section = CreditsTab:CreateSection("Credits")
 local Label = CreditsTab:CreateLabel("Made by JayxRN0T#0329")
 local Label = CreditsTab:CreateLabel("This is still being worked on, I will add more scripts time to time.")
+
 end
 if (gameid == 155615604) then
 
@@ -583,10 +584,6 @@ local Button = CreditsTab:CreateButton({
 local Section = CreditsTab:CreateSection("Credits")
 local Label = CreditsTab:CreateLabel("Made by JayxRN0T#0329")
 end
-
-
-
-
 
 
 Rayfield:LoadConfiguration()
