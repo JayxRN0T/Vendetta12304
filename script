@@ -1,3 +1,6 @@
+local gameid = game.PlaceId
+
+if (gameid == 6206893534) then
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 local Window = Rayfield:CreateWindow({
 	Name = "Vendetta Hub || 👊🏼 Cobra Kai Karate 🥋",
@@ -18,8 +21,8 @@ local Window = Rayfield:CreateWindow({
 		Title = "Vendetta Hub || Cobra Kai Karate",
 		Subtitle = "Key System",
 		Note = "Join the discord https://discord.gg/BHka2zK9",
-		FileName = "VendettaKey",
-		SaveKey = false,
+		FileName = "Vendetta Key",
+		SaveKey = true,
 		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
 		Key = "vendettaontop"
 	}
@@ -170,9 +173,9 @@ local CreditsTab = Window:CreateTab("Credits", 4483362458) -- Title, Image
 local Section = FarmTab:CreateSection("Equipment Scripts")
 -- Toggles
 local Toggle = FarmTab:CreateToggle({
-	Name = "AutoBench",
+	Name = "Auto Bench",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.bench = Value
         bench()
 	end
@@ -181,7 +184,7 @@ local Toggle = FarmTab:CreateToggle({
 local Toggle = FarmTab:CreateToggle({
 	Name = "Auto Dumbell",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.dumbell = Value
         dumbell()
 	end
@@ -190,7 +193,7 @@ local Toggle = FarmTab:CreateToggle({
 local Toggle = FarmTab:CreateToggle({
 	Name = "Teleport to Bag",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.tpbag = Value
         tpbag()
 	end
@@ -199,7 +202,7 @@ local Section = KeybindTab:CreateSection("Stat Scripts (OP for Autofarming)")
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Pushup",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.pushup = Value
         pushup()
 	end
@@ -208,7 +211,7 @@ local Toggle = KeybindTab:CreateToggle({
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Situp",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.situp = Value
         situp()
 	end
@@ -217,7 +220,7 @@ local Section = KeybindTab:CreateSection("Attack Scripts (OP for Autofarming str
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Punch",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.punch = Value
         punch()
 	end
@@ -226,7 +229,7 @@ local Toggle = KeybindTab:CreateToggle({
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto Sweep",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.sweep = Value
         sweep()
 	end
@@ -235,7 +238,7 @@ local Toggle = KeybindTab:CreateToggle({
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto DoubleKick",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.doublereg = Value
         doublereg()
 	end
@@ -244,7 +247,7 @@ local Toggle = KeybindTab:CreateToggle({
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto HandKick",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.handkick = Value
         handkick()
 	end
@@ -253,7 +256,7 @@ local Toggle = KeybindTab:CreateToggle({
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto CraneKick",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.crane = Value
         crane()
 	end
@@ -262,7 +265,7 @@ local Toggle = KeybindTab:CreateToggle({
 local Toggle = KeybindTab:CreateToggle({
 	Name = "Auto JumpKick",
 	CurrentValue = false,
-	Callback = function(Value)
+	k = function(Value)
         _G.jumpkick = Value
         jumpkick()
 	end
@@ -275,7 +278,7 @@ local Section = PlayerTab:CreateSection("Walkspeed and JumpPower Sliders")
 	Suffix = "WalkSpeed",
 	CurrentValue = 16,
 	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-	Callback = function(s)
+	k = function(s)
 		game.Players.LocalPlayer.character.Humanoid.WalkSpeed = s
 	end,
 })
@@ -287,14 +290,14 @@ local Section = PlayerTab:CreateSection("Walkspeed and JumpPower Sliders")
 	Suffix = "JumpPower",
 	CurrentValue = 16,
 	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-	Callback = function(s)
+	k = function(s)
 		game.Players.LocalPlayer.character.Humanoid.JumpPower = s
     end,
 })
 local Section = PlayerTab:CreateSection("Player Scripts")
 local Button = PlayerTab:CreateButton({
 	Name = "Hide Accesory",
-	Callback = function()
+	k = function()
         local player = game.Players.LocalPlayer
     for i,v in pairs(player.Character:GetChildren()) do
        if v.ClassName == "Accessory" or v.Name == "Belt" or v.Name == "Shirt" or v.Name == "Pants" then
@@ -312,7 +315,7 @@ end,
 
 local Button = PlayerTab:CreateButton({
 	Name = "Hide Name",
-	Callback = function()
+	k = function()
     _G.hidename = Value
     hidename()
 	end,
@@ -320,7 +323,7 @@ local Button = PlayerTab:CreateButton({
 
 local Button = PlayerTab:CreateButton({
 	Name = "Remove Stun",
-	Callback = function()
+	k = function()
     _G.nostun = Value
     nostun()
 	end,
@@ -331,15 +334,12 @@ local Button = PlayerTab:CreateButton({
 local Section = PlayerTab:CreateSection("Teleportation Script")
 local Button = PlayerTab:CreateButton({
 	Name = "T to TP",
-	Callback = function()
+	k = function()
     _G.etp = Value
     etp()
 	end,
 })
 
-local Section = CreditsTab:CreateSection("Credits")
-local Label = CreditsTab:CreateLabel("Made by JayxRN0T#0329")
-local Label = CreditsTab:CreateLabel("This is still being worked on, I will add more scripts time to time.")
 local Section = CreditsTab:CreateSection("Discord Server")
 local Button = CreditsTab:CreateButton({
 	Name = "Copy Discord to Clipboard",
@@ -347,6 +347,245 @@ local Button = CreditsTab:CreateButton({
 		setclipboard("https://discord.gg/BHka2zK9")
 	end,
 })
+local Section = CreditsTab:CreateSection("Credits")
+local Label = CreditsTab:CreateLabel("Made by JayxRN0T#0329")
+local Label = CreditsTab:CreateLabel("This is still being worked on, I will add more scripts time to time.")
+end
+if (gameid == 155615604) then
+
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Window = Rayfield:CreateWindow({
+	Name = "Vendetta Hub || Prison Life (Cars fixed!)",
+	LoadingTitle = "Vendetta Hub || Prison Life (Cars fixed!)",
+	LoadingSubtitle = "by JayxRN0T",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = "Vendetta Hub", -- Create a custom folder for your hub/game
+		FileName = "Vendetta Hub"
+	},
+        Discord = {
+        	Enabled = false,
+        	Invite = "", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        },
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Vendetta Hub || Prison Life (Cars fixed!)",
+		Subtitle = "Key System",
+		Note = "Join the discord https://discord.gg/BHka2zK9",
+		FileName = "Vendetta Key",
+		SaveKey = true,
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = "vendettaontop"
+	}
+})
+
+-- ANTI AFK
+pcall(function()
+    local VirtualUser=game:service'VirtualUser'
+    game:service'Players'.LocalPlayer.Idled:connect(function()
+    warn("anti-afk")
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+       end)
+    end) 
+-- GLOBALS
+LP = game.Players.LocalPlayer
+VIM = game:GetService("VirtualInputManager")
+-- Values
+_G.etp = true
+-- Functions
+function etp() end
+    plr = game.Players.LocalPlayer
+hum = plr.Character.HumanoidRootPart
+mouse = plr:GetMouse()
+
+mouse.KeyDown:connect(function(key)
+if key == "e" then
+if mouse.Target then
+hum.CFrame = CFrame.new(mouse.Hit.x, mouse.Hit.y + 5, mouse.Hit.z)
+end
+end
+end)
+-- Tabs
+local FarmTab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
+local CreditsTab = Window:CreateTab("Credits", 4483362458) -- Title, Image
+local Section = PlayerTab:CreateSection("Player Scripts")
+-- Toggles
+
+
+-- Sliders
+local Slider = PlayerTab:CreateSlider({
+	Name = "WalkSpeed",
+	Range = {16, 500},
+	Increment = 1,
+	Suffix = "WalkSpeed",
+	CurrentValue = 16,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(s)
+		game.Players.LocalPlayer.character.Humanoid.WalkSpeed = s
+	end,
+})
+local Slider = PlayerTab:CreateSlider({
+	Name = "Jump Power",
+	Range = {50, 250},
+	Increment = 1,
+	Suffix = "Jump Power",
+	CurrentValue = 50,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(s)
+		game.Players.LocalPlayer.character.Humanoid.JumpPower = s
+	end,
+})
+-- Buttons
+local Section = FarmTab:CreateSection("Gun Selection")
+local Button = FarmTab:CreateButton({
+	Name = "M9",
+	Callback = function(v)
+local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["M9"].ITEMPICKUP
+local Event = game:GetService("Workspace").Remote.ItemHandler
+Event:InvokeServer(A_1)
+
+    end,
+})
+local Button = FarmTab:CreateButton({
+	Name = "Remington 870",
+	Callback = function(v)
+local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["Remington 870"].ITEMPICKUP
+local Event = game:GetService("Workspace").Remote.ItemHandler
+Event:InvokeServer(A_1)
+
+    end,
+})
+local Button = FarmTab:CreateButton({
+	Name = "AK-47",
+	Callback = function(v)
+local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["AK-47"].ITEMPICKUP
+local Event = game:GetService("Workspace").Remote.ItemHandler
+Event:InvokeServer(A_1)
+
+    end,
+})
+local Button = FarmTab:CreateButton({
+	Name = "M4A1",
+	Callback = function(v)
+local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["M4A1"].ITEMPICKUP
+local Event = game:GetService("Workspace").Remote.ItemHandler
+Event:InvokeServer(A_1)
+
+    end,
+})
+local Section = PlayerTab:CreateSection("Teleportation Script")
+local Button = PlayerTab:CreateButton({
+	Name = "E to TP (No longer works if you die)",
+	Callback = function()
+    _G.etp = Value
+    etp()
+	end,
+})
+local Section = FarmTab:CreateSection("Gun Mods (Lags the server)")
+local Button = FarmTab:CreateButton({
+	Name = "Gun Mods (M9)",
+	Callback = function()
+	local module = nil
+	if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("M9") then
+		module = require(game:GetService("Players").LocalPlayer.Backpack["M9"].GunStates)
+	elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("M9") then
+		module = require(game:GetService("Players").LocalPlayer.Character["M9"].GunStates)
+	end
+    if module ~= nil then
+        module["MaxAmmo"] = math.huge
+        module["CurrentAmmo"] = math.huge
+        module["StoredAmmo"] = math.huge
+        module["FireRate"] = 0.000001
+        module["Spread"] = 0
+        module["Range"] = math.huge
+        module["Bullets"] = 5
+        module["ReloadTime"] = 0.000001
+        module["AutoFire"] = true
+    end
+    end
+})
+local Button = FarmTab:CreateButton({
+	Name = "Gun Mods (Remington 870)",
+	Callback = function()
+	local module = nil
+	if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Remington 870") then
+		module = require(game:GetService("Players").LocalPlayer.Backpack["Remington 870"].GunStates)
+	elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("Remington 870") then
+		module = require(game:GetService("Players").LocalPlayer.Character["Remington 870"].GunStates)
+	end
+    if module ~= nil then
+        module["MaxAmmo"] = math.huge
+        module["CurrentAmmo"] = math.huge
+        module["StoredAmmo"] = math.huge
+        module["FireRate"] = 0.000001
+        module["Spread"] = 0
+        module["Range"] = math.huge
+        module["Bullets"] = 5
+        module["ReloadTime"] = 0.000001
+        module["AutoFire"] = true
+    end
+    end
+})
+local Button = FarmTab:CreateButton({
+	Name = "Gun Mods (AK-47)",
+	Callback = function()
+	local module = nil
+	if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("AK-47") then
+		module = require(game:GetService("Players").LocalPlayer.Backpack["AK-47"].GunStates)
+	elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("AK-47") then
+		module = require(game:GetService("Players").LocalPlayer.Character["AK-47"].GunStates)
+	end
+    if module ~= nil then
+        module["MaxAmmo"] = math.huge
+        module["CurrentAmmo"] = math.huge
+        module["StoredAmmo"] = math.huge
+        module["FireRate"] = 0.000001
+        module["Spread"] = 0
+        module["Range"] = math.huge
+        module["Bullets"] = 5
+        module["ReloadTime"] = 0.000001
+        module["AutoFire"] = true
+    end
+    end
+})
+local Button = FarmTab:CreateButton({
+	Name = "Gun Mods (M4A1)",
+	Callback = function()
+	local module = nil
+	if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("M4A1") then
+		module = require(game:GetService("Players").LocalPlayer.Backpack["M4A1"].GunStates)
+	elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("M4A1") then
+		module = require(game:GetService("Players").LocalPlayer.Character["M4A1"].GunStates)
+	end
+    if module ~= nil then
+        module["MaxAmmo"] = math.huge
+        module["CurrentAmmo"] = math.huge
+        module["StoredAmmo"] = math.huge
+        module["FireRate"] = 0.000001
+        module["Spread"] = 0
+        module["Range"] = math.huge
+        module["Bullets"] = 5
+        module["ReloadTime"] = 0.000001
+        module["AutoFire"] = true
+    end
+    end
+})
+local Section = CreditsTab:CreateSection("Discord Server")
+local Button = CreditsTab:CreateButton({
+	Name = "Copy Discord to Clipboard",
+	Callback = function()
+		setclipboard("https://discord.gg/BHka2zK9")
+	end,
+})
+local Section = CreditsTab:CreateSection("Credits")
+local Label = CreditsTab:CreateLabel("Made by JayxRN0T#0329")
+end
+
+
+
 
 
 
